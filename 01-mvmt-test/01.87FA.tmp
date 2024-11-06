@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxa271m3ew0vw"]
+
+[ext_resource type="Script" path="res://01-mvmt-test/pilot.gd" id="1_qcp2x"]
+
+[node name="01" type="Node2D"]
+
+[node name="pilot" type="Node2D" parent="."]
+script = ExtResource("1_qcp2x")
+
+[node name="Camera2D" type="Camera2D" parent="."]
