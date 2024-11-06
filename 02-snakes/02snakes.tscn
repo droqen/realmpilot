@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb2s8qvbqhwoy"]
+
+[ext_resource type="Script" path="res://02-snakes/grid_square_spawner.gd" id="1_gn8fc"]
+[ext_resource type="PackedScene" uid="uid://d1ivckx01nooj" path="res://02-snakes/grid_square.tscn" id="2_q48yd"]
+
+[node name="02Snakes" type="Node2D"]
+
+[node name="grid-square-spawn" type="Node2D" parent="."]
+position = Vector2(436, 576)
+script = ExtResource("1_gn8fc")
+cellwidth = 70.0
+cellheight = 70.0
+gridsquareprefab = ExtResource("2_q48yd")

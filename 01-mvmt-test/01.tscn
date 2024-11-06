@@ -1,10 +1,89 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxa271m3ew0vw"]
+[gd_scene load_steps=9 format=3 uid="uid://cxa271m3ew0vw"]
 
 [ext_resource type="Script" path="res://01-mvmt-test/pilot.gd" id="1_qcp2x"]
+[ext_resource type="Script" path="res://01-mvmt-test/clouds.gd" id="2_7w650"]
+[ext_resource type="Script" path="res://01-mvmt-test/camera.gd" id="2_yuw30"]
+[ext_resource type="Script" path="res://01-mvmt-test/parallax.gd" id="3_bpolo"]
+
+[sub_resource type="Gradient" id="Gradient_uexpv"]
+offsets = PackedFloat32Array(0.798701)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8bqih"]
+gradient = SubResource("Gradient_uexpv")
+width = 480
+height = 480
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="SystemFont" id="SystemFont_7qo50"]
+font_names = PackedStringArray("Georgia", "Serif")
+font_weight = 999
+
+[sub_resource type="LabelSettings" id="LabelSettings_lkalg"]
+font = SubResource("SystemFont_7qo50")
+font_size = 20
+outline_size = 2
+outline_color = Color(1, 1, 1, 0.262745)
 
 [node name="01" type="Node2D"]
+
+[node name="clouds_crop" type="Sprite2D" parent="."]
+clip_children = 1
+position = Vector2(-240, 0)
+texture = SubResource("GradientTexture2D_8bqih")
+
+[node name="clouds" type="Node2D" parent="clouds_crop"]
+script = ExtResource("2_7w650")
 
 [node name="pilot" type="Node2D" parent="."]
 script = ExtResource("1_qcp2x")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="camera" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("2_yuw30")
+target = NodePath("../pilot")
+
+[node name="parallax-label" type="Node2D" parent="camera"]
+script = ExtResource("3_bpolo")
+
+[node name="Label" type="Label" parent="camera/parallax-label"]
+offset_left = -133.0
+offset_top = -28.0
+offset_right = 155.0
+offset_bottom = 23.0
+text = "success and colour shining
+and 	bright, bright sun"
+label_settings = SubResource("LabelSettings_lkalg")
+
+[node name="ColorRect" type="ColorRect" parent="camera/parallax-label/Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.192157)
+
+[node name="parallax-label2" type="Node2D" parent="camera"]
+scale = Vector2(1.2, 1.2)
+script = ExtResource("3_bpolo")
+posmult = 2.5
+
+[node name="Label" type="Label" parent="camera/parallax-label2"]
+offset_left = -362.5
+offset_top = 155.0
+offset_right = -74.5
+offset_bottom = 206.0
+text = "in every way glitters
+a shape without measure"
+label_settings = SubResource("LabelSettings_lkalg")
+
+[node name="ColorRect" type="ColorRect" parent="camera/parallax-label2/Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.192157)

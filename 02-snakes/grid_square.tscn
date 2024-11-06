@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1ivckx01nooj"]
+
+[sub_resource type="Gradient" id="Gradient_wx84g"]
+offsets = PackedFloat32Array(0.87013, 0.876623, 0.941558, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3tcgt"]
+gradient = SubResource("Gradient_wx84g")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="SystemFont" id="SystemFont_o8oxr"]
+font_names = PackedStringArray("Fira Mono", "monospace")
+
+[sub_resource type="LabelSettings" id="LabelSettings_dg38i"]
+font = SubResource("SystemFont_o8oxr")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[node name="grid-square" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_3tcgt")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -26.0
+offset_top = -29.0
+offset_right = 26.0
+offset_bottom = 27.0
+text = "13"
+label_settings = SubResource("LabelSettings_dg38i")
+horizontal_alignment = 2
