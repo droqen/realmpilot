@@ -38,6 +38,7 @@ texture = SubResource("GradientTexture2D_8bqih")
 script = ExtResource("2_7w650")
 
 [node name="pilot" type="Node2D" parent="."]
+visible = false
 script = ExtResource("1_qcp2x")
 
 [node name="camera" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
@@ -46,6 +47,7 @@ target = NodePath("../pilot")
 
 [node name="parallax-label" type="Node2D" parent="camera"]
 script = ExtResource("3_bpolo")
+posmult = 1.5
 
 [node name="Label" type="Label" parent="camera/parallax-label"]
 offset_left = -133.0
@@ -68,7 +70,7 @@ color = Color(1, 1, 1, 0.192157)
 [node name="parallax-label2" type="Node2D" parent="camera"]
 scale = Vector2(1.2, 1.2)
 script = ExtResource("3_bpolo")
-posmult = 2.5
+posmult = 3.0
 
 [node name="Label" type="Label" parent="camera/parallax-label2"]
 offset_left = -362.5

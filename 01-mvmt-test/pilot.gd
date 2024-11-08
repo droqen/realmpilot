@@ -5,19 +5,20 @@ var desired_spd_amp : float
 var desired_spd : float
 
 func _physics_process(delta: float) -> void:
-	var c = get_global_mouse_position()
-	var toc = c - position
-	var toc_dir = toc.normalized()
-	var toc_dist = toc.length()
-	desired_spd_amp = 0.0
-	if toc_dist < 13: desired_spd_amp = 0.0
-	elif toc_dist < 50: desired_spd_amp = remap(toc_dist,13,50,0.00,0.33)
-	elif toc_dist < 200: desired_spd_amp = remap(toc_dist,50,200,0.33,1.00)
-	else: desired_spd_amp = 1.00
-	desired_spd = desired_spd_amp * 300.0
-	var desired_v = toc_dir * desired_spd
-	v = lerp(v, desired_v, 5.0 * delta)
-	position += v * delta
+	position = get_global_mouse_position()
+	#var c = get_global_mouse_position()
+	#var toc = c - position
+	#var toc_dir = toc.normalized()
+	#var toc_dist = toc.length()
+	#desired_spd_amp = 0.0
+	#if toc_dist < 13: desired_spd_amp = 0.0
+	#elif toc_dist < 50: desired_spd_amp = remap(toc_dist,13,50,0.00,0.33)
+	#elif toc_dist < 200: desired_spd_amp = remap(toc_dist,50,200,0.33,1.00)
+	#else: desired_spd_amp = 1.00
+	#desired_spd = desired_spd_amp * 300.0
+	#var desired_v = toc_dir * desired_spd
+	#v = lerp(v, desired_v, 25.0 * delta)
+	#position += v * delta
 	queue_redraw()
 
 func _draw() -> void:
